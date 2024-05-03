@@ -1,29 +1,68 @@
-# Create T3 App
+<a name="readme-top"></a>
 
-This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3-app`.
+<!-- PROJECT SHIELDS -->
+<div align="center">
 
-## What's next? How do I make an app with this?
+<a href="[contributors-url]">[![Contributors][contributors-shield]][contributors-url]</a>
+<a href="[forks-url]">[![Forks][forks-shield]][forks-url]</a>
+<a href="[stars-url]">[![Stargazers][stars-shield]][stars-url]</a>
+<a href="[issues-url]">[![Issues][issues-shield]][issues-url]</a>
+<a href="[license-url]">[![BSD-3-Clause License][license-shield]][license-url]</a>
 
-We try to keep this project as simple as possible, so you can start with just the scaffolding we set up for you, and add additional things later when they become necessary.
+</div>
 
-If you are not familiar with the different technologies used in this project, please refer to the respective docs. If you still are in the wind, please join our [Discord](https://t3.gg/discord) and ask for help.
+<!-- PROJECT LOGO -->
+<br />
+<div align="center">
+  <h3 align="center">ngjx.org</h3>
 
-- [Next.js](https://nextjs.org)
-- [NextAuth.js](https://next-auth.js.org)
-- [Prisma](https://prisma.io)
-- [Drizzle](https://orm.drizzle.team)
-- [Tailwind CSS](https://tailwindcss.com)
-- [tRPC](https://trpc.io)
+  <p align="center">
+    My portfolio and blog website
+    <br />
+    <a href="https://github.com/caffeine-addictt/portfolio/issues">Report Bug</a>
+    ·
+    <a href="https://github.com/caffeine-addictt/portfolio/issues">Request Feature</a>
+  </p>
+</div>
 
-## Learn More
+<!-- ABOUT THE PROJECT -->
 
-To learn more about the [T3 Stack](https://create.t3.gg/), take a look at the following resources:
+## About The Project
 
-- [Documentation](https://create.t3.gg/)
-- [Learn the T3 Stack](https://create.t3.gg/en/faq#what-learning-resources-are-currently-available) — Check out these awesome tutorials
+This is the source code for my portfolio and blog website!
 
-You can check out the [create-t3-app GitHub repository](https://github.com/t3-oss/create-t3-app) — your feedback and contributions are welcome!
+View the [Live Demo](https://ngjx.org)
 
-## How do I deploy this?
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-Follow our deployment guides for [Vercel](https://create.t3.gg/en/deployment/vercel), [Netlify](https://create.t3.gg/en/deployment/netlify) and [Docker](https://create.t3.gg/en/deployment/docker) for more information.
+<!-- LICENSE -->
+
+## License
+
+Distributed under the BSD-3-Clause License. See `LICENSE.txt` for more information.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- CONTACT -->
+
+## Contact
+
+Alex - [contact@ngjx.org](mailto:contact@ngjx.org)
+
+Form - [ngjx.org/contact](https://ngjx.org/contact)
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- MARKDOWN LINKS & IMAGES -->
+<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+
+[contributors-shield]: https://img.shields.io/github/contributors/caffeine-addictt/portfolio.svg?style=for-the-badge
+[contributors-url]: https://github.com/caffeine-addictt/portfolio/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/caffeine-addictt/portfolio.svg?style=for-the-badge
+[forks-url]: https://github.com/caffeine-addictt/portfolio/network/members
+[stars-shield]: https://img.shields.io/github/stars/caffeine-addictt/portfolio.svg?style=for-the-badge
+[stars-url]: https://github.com/caffeine-addictt/portfolio/stargazers
+[issues-shield]: https://img.shields.io/github/issues/caffeine-addictt/portfolio.svg?style=for-the-badge
+[issues-url]: https://github.com/caffeine-addictt/portfolio/issues
+[license-shield]: https://img.shields.io/github/license/caffeine-addictt/portfolio.svg?style=for-the-badge
+[license-url]: https://github.com/caffeine-addictt/portfolio/blob/master/LICENSE.txt

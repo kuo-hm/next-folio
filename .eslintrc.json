@@ -1,0 +1,20 @@
+{
+  "root": true,
+  "extends": [
+    "next/core-web-vitals",
+    "@sanity/eslint-config-studio",
+    "plugin:tailwindcss/recommended"
+  ],
+  "overrides": [
+    {
+      "files": ["**/*.ts", "**/*.tsx", "**/*.js"],
+      "parser": "@typescript-eslint/parser"
+    }
+  ],
+  "settings": {
+    "tailwindcss": {
+      "config": "tailwind.config.ts",
+      "callees": ["className", "clsx", "cn", "cva", "twMerge"]
+    }
+  }
+}
