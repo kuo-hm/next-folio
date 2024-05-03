@@ -28,7 +28,7 @@ const HomePage = () => {
           <span className="text-xl font-medium text-black dark:text-white">
             full-stack developer
           </span>{' '}
-          and hobbist gamer based in Morocco.
+          and hobbyist gamer based in Morocco.
         </p>
 
         {/* Links */}
