@@ -35,7 +35,6 @@ export const metadata: Metadata = {
     'developer',
     'full-stack',
     'software',
-    'singapore',
     'sg',
   ],
   applicationName: "Oussama's Portfolio",
@@ -49,7 +48,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Oussama's Portfolio ",
     description:
-      'Hi! I am a full stack developer and hobbist hacker based in Singapore! Interested to learn more? Check out my portfolio!',
+      'Hi! I am a full stack developer and hobbist gamer based in Morocco! Interested to learn more? Check out my portfolio!',
     url: 'https://hmoura.com',
     siteName: 'hmoura.com',
     images: [
@@ -76,7 +75,7 @@ export const metadata: Metadata = {
   twitter: {
     title: "Oussama's Portfolio ",
     description:
-      'Hi! I am a full stack developer and hobbist hacker based in Singapore! Interested to learn more? Check out my portfolio!',
+      'Hi! I am a full stack developer and hobbist gamer based in Morocco! Interested to learn more? Check out my portfolio!',
     card: 'summary_large_image',
     images: 'https://hmoura.com/images/siteImage.png',
   },
