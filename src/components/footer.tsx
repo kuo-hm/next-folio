@@ -1,12 +1,12 @@
 'use client';
 
-import * as React from 'react';
-import Link from 'next/link';
 import {
-  InternalLink,
   ExternalLink,
   ExternalLinkProps,
+  InternalLink,
 } from '@components/ui/button';
+import Link from 'next/link';
+import * as React from 'react';
 
 import { cn } from '@utils/tailwind';
 
@@ -14,11 +14,11 @@ import { Separator } from '@components/ui/separator';
 import { TooltipWrapper } from '@components/ui/tooltip';
 
 import {
-  VercelIcon,
   NextJSIcon,
   RadixUIIcon,
   ShadcnUIIcon,
   TailwindCSSIcon,
+  VercelIcon,
 } from '@components/icons/devicons';
 import {
   CodeIcon,
@@ -83,14 +83,14 @@ const Footer = () => {
 
             <div className="flex flex-wrap gap-1">
               <TechnologyStackItem
-                href="https://github.com/caffeine-addictt"
+                href="https://github.com/kuo-hm"
                 text="GitHub"
               >
                 <GitHubLogoIcon className="size-6" />
               </TechnologyStackItem>
 
               <TechnologyStackItem
-                href="https://linkedin.com/in/ngjx"
+                href="https://linkedin.com/in/hmoura-oussama"
                 text="LinkedIn"
               >
                 <LinkedInLogoIcon className="size-6" />
@@ -104,12 +104,12 @@ const Footer = () => {
           <div className="break-before-auto max-sm:max-w-[60%]">
             <p>Have an inqury or project idea?</p>
             Feel free to contact me anytime at&nbsp;
-            <TooltipWrapper text="contact@ngjx.org" asChild>
+            <TooltipWrapper text="hmouraoussama@gmail.com" asChild>
               <Link
-                href="mailto:contact@ngjx.org"
+                href="mailto:hmouraoussama@gmail.com"
                 className="text-blue-500 hover:underline"
               >
-                contact@ngjx.org
+                hmouraoussama@gmail.com
               </Link>
             </TooltipWrapper>
             .
@@ -132,7 +132,7 @@ const Footer = () => {
         </div>
 
         <p className="text-sm font-light opacity-80">
-          © Copyright {new Date().getFullYear()} Jun Xiang. All rights
+          © Copyright {new Date().getFullYear()} Oussama Hmoura. All rights
           reserved.
         </p>
       </div>

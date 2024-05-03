@@ -22,10 +22,9 @@ export const metadata: Metadata = {
   },
   category: 'technology',
   description:
-    'Hi! I am a full stack developer and hobbist hacker based in Singapore! Interested to learn more? Check out my portfolio!',
+    'Hi! I am a full stack developer and hobbist gamer based in Morocco! Interested to learn more? Check out my portfolio!',
   keywords: [
     'portfolio',
-    'blog',
     'nextjs',
     'tailwindcss',
     'vercel',
@@ -48,7 +47,7 @@ export const metadata: Metadata = {
     canonical: 'https://hmoura.com',
   },
   openGraph: {
-    title: "Oussama's Portfolio and Blog Site",
+    title: "Oussama's Portfolio ",
     description:
       'Hi! I am a full stack developer and hobbist hacker based in Singapore! Interested to learn more? Check out my portfolio!',
     url: 'https://hmoura.com',
@@ -75,14 +74,14 @@ export const metadata: Metadata = {
     },
   },
   twitter: {
-    title: "Oussama's Portfolio and Blog Site",
+    title: "Oussama's Portfolio ",
     description:
       'Hi! I am a full stack developer and hobbist hacker based in Singapore! Interested to learn more? Check out my portfolio!',
     card: 'summary_large_image',
     images: 'https://hmoura.com/images/siteImage.png',
   },
   appleWebApp: {
-    title: "Oussama's Portfolio and Blog Site",
+    title: "Oussama's Portfolio ",
     capable: true,
     statusBarStyle: 'default',
   },

@@ -1,23 +1,20 @@
 'use client';
 
-import * as z from 'zod';
-import * as React from 'react';
-import { onSubmit } from './action';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm, useFormState } from 'react-hook-form';
+import * as z from 'zod';
 
+import { Button } from '@components/ui/button';
 import {
   Form,
-  FormItem,
-  FormLabel,
-  FormField,
-  FormMessage,
   FormControl,
   FormDescription,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
 } from '@components/ui/form';
 import { Input } from '@components/ui/input';
-import { Button } from '@components/ui/button';
-import { Textarea } from '@components/ui/textarea';
 import {
   Select,
   SelectContent,
@@ -25,8 +22,10 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@components/ui/select';
+import { Textarea } from '@components/ui/textarea';
 
 import { useToast } from '@components/ui/use-toast';
+import { sendEmail } from '@utils/send-email';
 
 export const formSchema = z.object({
   type: z.string({ required_error: 'Type is required' }),
@@ -53,7 +52,7 @@ export const ContactForm = () => {
 
   const submitProxy = async (data: z.infer<typeof formSchema>) => {
     toast({ title: 'Sending...', description: 'Please be patient!' });
-    const actionResult = await onSubmit(data);
+    const actionResult = await sendEmail(data);
 
     if (!actionResult) {
       toast({

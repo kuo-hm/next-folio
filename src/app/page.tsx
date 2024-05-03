@@ -7,11 +7,7 @@ import { Separator } from '@components/ui/separator';
 import { Skeleton } from '@components/ui/skeleton';
 import { TooltipWrapper } from '@components/ui/tooltip';
 
-import {
-  ArrowTopRightIcon,
-  BackpackIcon,
-  FileTextIcon,
-} from '@radix-ui/react-icons';
+import { ArrowTopRightIcon, BackpackIcon } from '@radix-ui/react-icons';
 
 const HomePage = () => {
   return (
@@ -21,7 +17,7 @@ const HomePage = () => {
         style={{ height: 'calc(100vh - 64px)' }}
       >
         {/* Introduction and what I do */}
-        <p>Hi, I&apos;m Alex</p>
+        <p>Hi, I&apos;m Oussama</p>
         <h1 className="mb-4 text-5xl font-bold">
           I Bring{' '}
           <span className="text-accent-light dark:text-accent-dark">Ideas</span>{' '}
@@ -32,7 +28,7 @@ const HomePage = () => {
           <span className="text-xl font-medium text-black dark:text-white">
             full-stack developer
           </span>{' '}
-          and hobbist hacker based in Singapore.
+          and hobbist gamer based in Morocco.
         </p>
 
         {/* Links */}
@@ -72,10 +68,10 @@ const HomePage = () => {
           </h1>
 
           <p className="mb-2 max-sm:max-w-[70%]">
-            I started my journey creating games
+            I started my journey developing
             <span className="font-bold text-accent-light dark:text-accent-dark">
               {' '}
-              {new Date().getUTCFullYear() - 2017}+ years ago
+              {new Date().getUTCFullYear() - 2018}+ years ago
             </span>
             .
           </p>
@@ -87,12 +83,12 @@ const HomePage = () => {
             and web applications using
             <span className="font-bold text-accent-light dark:text-accent-dark">
               {' '}
-              React
+              NextJS
             </span>{' '}
             and
             <span className="font-bold text-accent-light dark:text-accent-dark">
               {' '}
-              NextJS
+              NestJS
             </span>{' '}
             and libraries in
             <span className="font-bold text-accent-light dark:text-accent-dark">
@@ -139,12 +135,6 @@ const HomePage = () => {
 
           <Separator className="mb-4 mt-8 h-px w-full max-w-[70%] md:max-w-[50%] lg:max-w-[30%]" />
           <div className="flex flex-wrap items-center gap-2">
-            <TooltipWrapper text="View my blog!" asChild>
-              <InternalLink href="/blog" variant="outline">
-                <FileTextIcon className="mr-2 size-4 rotate-0 scale-100" />
-                My Blog
-              </InternalLink>
-            </TooltipWrapper>
             <TooltipWrapper text="See how I used my skills!" asChild>
               <InternalLink href="/projects" variant="outline">
                 My Projects <ArrowTopRightIcon className="ml-2" />
@@ -160,28 +150,216 @@ export default HomePage;
 
 const RenderSkills = async () => {
   const skills = [
-    { name: 'Home', href: '/', icon: { dark: true, light: false } },
-    { name: 'About Us', href: '/about', icon: { dark: false, light: true } },
-    { name: 'Contact', href: '/contact', icon: { dark: true, light: true } },
     {
-      name: 'Settings',
-      href: '/settings',
-      icon: { dark: false, light: false },
+      name: 'ReactJs',
+      href: 'https://react.dev/',
+      icon: { dark: false, light: true },
+      image: '/images/react.svg',
     },
     {
-      name: 'Dashboard',
-      href: '/dashboard',
-      icon: { dark: true, light: true },
+      name: 'Radix',
+      href: 'https://www.radix-ui.com/',
+      icon: { dark: false, light: true },
+      image: '/images/radix.svg',
     },
-    { name: 'Messages', href: '/messages', icon: { dark: false, light: true } },
     {
-      name: 'Notifications',
-      href: '/notifications',
-      icon: { dark: true, light: false },
+      name: 'CSharp',
+      href: 'https://learn.microsoft.com/en-us/dotnet/csharp/',
+      icon: { dark: false, light: true },
+      image: '/images/CSharp.svg',
     },
-    { name: 'Help', href: '/help', icon: { dark: false, light: true } },
-    { name: 'Logout', href: '/logout', icon: { dark: true, light: true } },
-    { name: 'Profile', href: '/profile', icon: { dark: false, light: false } },
+    {
+      name: 'Fedora',
+      href: 'https://fedoraproject.org/',
+      icon: { dark: false, light: true },
+      image: '/images/Fedora.svg',
+    },
+    {
+      name: 'Sqlite',
+      href: 'https://www.sqlite.org/',
+      icon: { dark: false, light: true },
+      image: '/images/Sqlite.svg',
+    },
+    {
+      name: 'Flask',
+      href: 'https://flask.palletsprojects.com',
+      icon: { dark: false, light: true },
+      image: '/images/Flask.svg',
+    },
+    {
+      name: 'Nginx',
+      href: 'https://www.nginx.com/',
+      icon: { dark: false, light: true },
+      image: '/images/Nginx.svg',
+    },
+    {
+      name: 'Sass',
+      href: 'https://sass-lang.com/',
+      icon: { dark: false, light: true },
+      image: '/images/Sass.svg',
+    },
+    {
+      name: 'JavaScript',
+      href: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript',
+      icon: { dark: false, light: true },
+      image: '/images/JavaScript.svg',
+    },
+    {
+      name: 'JQuery',
+      href: 'https://jquery.com/',
+      icon: { dark: false, light: true },
+      image: '/images/JQuery.svg',
+    },
+    {
+      name: 'Linux',
+      href: 'https://www.linux.org/',
+      icon: { dark: false, light: true },
+      image: '/images/Linux.svg',
+    },
+    {
+      name: 'Python',
+      href: 'https://www.python.org/',
+      icon: { dark: false, light: true },
+      image: '/images/Python.svg',
+    },
+    {
+      name: 'Go',
+      href: 'https://go.dev/',
+      icon: { dark: false, light: true },
+      image: '/images/Go.svg',
+    },
+    {
+      name: 'Debian',
+      href: 'https://www.debian.org/',
+      icon: { dark: false, light: true },
+      image: '/images/Debian.svg',
+    },
+    {
+      name: 'Vim',
+      href: 'https://www.vim.org/',
+      icon: { dark: false, light: true },
+      image: '/images/Vim.svg',
+    },
+    {
+      name: 'Docker',
+      href: 'https://www.docker.com/',
+      icon: { dark: false, light: true },
+      image: '/images/Docker.svg',
+    },
+    {
+      name: 'Npm',
+      href: 'https://www.npmjs.com/',
+      icon: { dark: false, light: true },
+      image: '/images/Npm.svg',
+    },
+    {
+      name: 'Eslint',
+      href: 'https://eslint.org/',
+      icon: { dark: false, light: true },
+      image: '/images/Eslint.svg',
+    },
+    {
+      name: 'Typescript',
+      href: 'https://www.typescriptlang.org/',
+      icon: { dark: false, light: true },
+      image: '/images/Typescript.svg',
+    },
+    {
+      name: 'Redis',
+      href: 'https://redis.io/',
+      icon: { dark: false, light: true },
+      image: '/images/Redis.svg',
+    },
+    {
+      name: 'MarkDown',
+      href: 'https://www.markdownguide.org/',
+      icon: { dark: false, light: true },
+      image: '/images/MarkDown.svg',
+    },
+    {
+      name: 'Git',
+      href: 'https://git-scm.com/',
+      icon: { dark: false, light: true },
+      image: '/images/Git.svg',
+    },
+    {
+      name: 'Vercel',
+      href: 'https://vercel.com/',
+      icon: { dark: false, light: true },
+      image: '/images/Vercel.svg',
+    },
+    {
+      name: 'Postgresql',
+      href: 'https://www.postgresql.org/',
+      icon: { dark: false, light: true },
+      image: '/images/Postgresql.svg',
+    },
+    {
+      name: 'Tailwindcss',
+      href: 'https://tailwindcss.com/',
+      icon: { dark: false, light: true },
+      image: '/images/Tailwindcss.svg',
+    },
+    {
+      name: 'Html5',
+      href: 'https://developer.mozilla.org/en-US/docs/Glossary/HTML5',
+      icon: { dark: false, light: true },
+      image: '/images/Html5.svg',
+    },
+    {
+      name: 'Ubuntu',
+      href: 'https://ubuntu.com/',
+      icon: { dark: false, light: true },
+      image: '/images/Ubuntu.svg',
+    },
+    {
+      name: 'Mongodb',
+      href: 'https://www.mongodb.com/',
+      icon: { dark: false, light: true },
+      image: '/images/Mongodb.svg',
+    },
+    {
+      name: 'NextJS',
+      href: 'https://nextjs.org/',
+      icon: { dark: false, light: true },
+      image: '/images/NextJS.svg',
+    },
+    {
+      name: 'VScode',
+      href: 'https://code.visualstudio.com/',
+      icon: { dark: false, light: true },
+      image: '/images/VScode.svg',
+    },
+    {
+      name: 'ArchLinux',
+      href: 'https://archlinux.org/',
+      icon: { dark: false, light: true },
+      image: '/images/ArchLinux.svg',
+    },
+    {
+      name: 'Sql',
+      href: 'https://developer.mozilla.org/en-US/docs/Glossary/SQL',
+      icon: { dark: false, light: true },
+      image: '/images/Sql.svg',
+    },
+    {
+      name: 'Shadcn',
+      href: 'https://ui.shadcn.com/',
+      icon: { dark: false, light: true },
+      image: '/images/Shadcn.svg',
+    },
+    {
+      name: 'NodeJS',
+      href: 'https://nodejs.org',
+      icon: { dark: false, light: true },
+      image: '/images/NodeJS.svg',
+    },
+    {
+      name: 'ReduxJS',
+      href: 'https://redux.js.org/',
+      icon: { dark: false, light: true },
+      image: '/images/ReduxJS.svg',
+    },
   ];
 
   return (
@@ -198,14 +376,22 @@ const RenderSkills = async () => {
               {skill?.icon?.dark && skill?.icon?.light ? (
                 <>
                   <Image
-                    src={'/images/defaultCardPicture.png'}
+                    src={
+                      skill.image
+                        ? skill.image
+                        : '/images/defaultCardPicture.png'
+                    }
                     alt="/images/dark.svg"
                     width={16}
                     height={16}
                     className="absolute size-6 scale-100 transition-all dark:scale-0"
                   />
                   <Image
-                    src={'/images/defaultCardPicture.png'}
+                    src={
+                      skill.image
+                        ? skill.image
+                        : '/images/defaultCardPicture.png'
+                    }
                     alt="/images/light.svg"
                     width={16}
                     height={16}
@@ -217,8 +403,8 @@ const RenderSkills = async () => {
                   {skill.icon?.dark || skill.icon?.light ? (
                     <Image
                       src={
-                        skill.icon.dark
-                          ? '/images/defaultCardPicture.png'
+                        skill.image
+                          ? skill.image
                           : '/images/defaultCardPicture.png'
                       }
                       alt="/images/dark.svg"

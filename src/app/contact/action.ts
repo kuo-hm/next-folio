@@ -1,7 +1,7 @@
 'use server';
 
-import { Resend } from 'resend';
 import { escapeQueryString } from '@utils/strings';
+import { Resend } from 'resend';
 
 import * as z from 'zod';
 import { formSchema } from './form';
@@ -17,8 +17,8 @@ export const onSubmit = async (
     const filteredMessage = escapeQueryString(values.message);
 
     resend.emails.send({
-      from: 'feedback@ngjx.org',
-      to: 'contact@ngjx.org',
+      from: 'contact@hmoura.com',
+      to: 'hmouraoussama@gmail.com',
       subject: filteredSubject,
       text: filteredMessage,
       html: `

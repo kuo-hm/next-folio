@@ -19,44 +19,34 @@ const ProjectsListPage = async ({ searchParams }: PageParamProps) => {
   const totalItems = 2;
   const data: ProjectItem[] = [
     {
-      slug: 'project-1',
-      title: 'Project 1',
+      slug: '#',
+      title: 'Under Construction',
       description: {
-        short: 'Short description of Project 1',
-        long: ['Long description of Project 1'],
+        short: 'Under Construction',
+        long: ['Under Construction'],
       },
       images: {
         image: 'path/to/image1.jpg',
         icon: 'path/to/icon1.jpg',
       },
       links: {
-        demo: 'https://example.com/demo1',
-        repo: 'https://github.com/repo1',
+        repo: 'https://github.com/kuo-hm',
         extra: [
           {
             title: 'Extra Link 1',
-            url: 'https://example.com/extra1',
+            url: 'https://hmoura.com',
           },
         ],
       },
       technologies: [
         {
-          name: 'Technology 1',
+          name: 'NextJs',
           href: '',
           start_time: '',
           icon: {
             dark: true,
             light: false,
           },
-        },
-        {
-          name: 'Technology 2',
-          icon: {
-            dark: true,
-            light: false,
-          },
-          href: '',
-          start_time: '',
         },
       ],
       timeframe: {

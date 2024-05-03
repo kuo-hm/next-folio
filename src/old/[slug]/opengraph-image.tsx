@@ -2,9 +2,6 @@
 
 import { ImageResponse } from 'next/og';
 
-import { queryProjects, urlFor } from '@lib/sanity/client';
-import { escapeQueryString } from '@utils/strings';
-
 export const runtime = 'edge';
 export const alt = 'About my project';
 export const contentType = 'image/png';
@@ -14,11 +11,45 @@ export const size = {
 };
 
 const og = async ({ params: { slug } }: { params: { slug: string } }) => {
-  const data = await queryProjects({
-    slug: escapeQueryString(slug),
-    queryLength: 1,
-    lookingFor: ['images', 'title', 'description'],
-  });
+  const data = [
+    {
+      slug: '#',
+      title: 'Under Construction',
+      description: {
+        short: 'Under Construction',
+        long: ['Under Construction'],
+      },
+      images: {
+        image: 'path/to/image1.jpg',
+        icon: 'path/to/icon1.jpg',
+      },
+      links: {
+        repo: 'https://github.com/kuo-hm',
+        extra: [
+          {
+            title: 'Extra Link 1',
+            url: 'https://hmoura.com',
+          },
+        ],
+      },
+      technologies: [
+        {
+          name: 'NextJs',
+          href: '',
+          start_time: '',
+          icon: {
+            dark: true,
+            light: false,
+          },
+        },
+      ],
+      timeframe: {
+        start: new Date('2023-01-01').toISOString(),
+        end: new Date('2023-06-30').toISOString(),
+      },
+    },
+  ];
+
   if (!data.length) return;
   const fetched = data[0];
 
@@ -45,10 +76,7 @@ const og = async ({ params: { slug } }: { params: { slug: string } }) => {
           }}
         >
           {fetched.images?.image ? (
-            <img
-              src={urlFor(fetched.images?.image).url()}
-              alt={fetched.title}
-            />
+            <img src={'/images/defaultCardPicture.png'} alt={fetched.title} />
           ) : (
             <img
               src={`${process.env.NEXT_PUBLIC_BASE_URL}/images/siteImage.png`}

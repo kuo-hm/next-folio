@@ -1,33 +1,29 @@
 'use client';
 
-import * as React from 'react';
-
-import { useToast } from '@components/ui/use-toast';
-import { TooltipWrapper } from '@components/ui/tooltip';
 import { ModeToggle } from '@components/theme-provider';
-import { InternalLink, ExternalLink, Button } from '@components/ui/button';
+import { Button, ExternalLink, InternalLink } from '@components/ui/button';
+import { TooltipWrapper } from '@components/ui/tooltip';
 
 import {
   DropdownMenu,
+  DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuLabel,
-  DropdownMenuTrigger,
-  DropdownMenuContent,
   DropdownMenuSeparator,
+  DropdownMenuTrigger,
 } from '@components/ui/dropdown-menu';
 import {
-  GitHubLogoIcon,
-  LinkedInLogoIcon,
-  FileTextIcon,
   CodeIcon,
-  HamburgerMenuIcon,
   Cross2Icon,
   EnvelopeOpenIcon,
+  FileTextIcon,
+  GitHubLogoIcon,
+  HamburgerMenuIcon,
+  LinkedInLogoIcon,
 } from '@radix-ui/react-icons';
+import { SmoothScroll } from './ui/clientbutton';
 
 const Navbar = () => {
-  const { toast } = useToast();
-
   return (
     <nav className="fixed z-50 flex h-16 w-full justify-center bg-white/60 shadow-sm backdrop-blur-sm transition-all will-change-scroll dark:bg-black/60">
       <div className="mb-2 mt-4 flex h-full w-[95%] flex-row justify-between gap-1 self-center">
@@ -40,7 +36,6 @@ const Navbar = () => {
               className="my-auto text-lg font-bold"
             >
               <CodeIcon className="mr-2 size-6 rotate-0 scale-100" />
-              Portfolio
             </InternalLink>
           </TooltipWrapper>
 
@@ -54,13 +49,15 @@ const Navbar = () => {
             </InternalLink>
           </TooltipWrapper>
 
-          <TooltipWrapper text="View my blog!" asChild>
+          <TooltipWrapper text="View my projects!" asChild>
             <InternalLink
-              href="/blog"
+              href="/#skills"
               variant="link"
               className="my-auto text-sm font-normal max-sm:hidden"
             >
-              Blog
+              <SmoothScroll variant="ghost" toId="skills">
+                Skills
+              </SmoothScroll>
             </InternalLink>
           </TooltipWrapper>
         </div>
@@ -79,25 +76,38 @@ const Navbar = () => {
           </TooltipWrapper>
 
           <TooltipWrapper text="My Resume" asChild>
-            <Button
-              variant="outline"
-              className="my-auto max-md:hidden"
-              onClick={() =>
-                toast({
-                  title: 'Coming soon!',
-                  description: 'My Resume will be available soon.',
-                  variant: 'destructive',
-                })
-              }
-            >
-              <FileTextIcon className="mr-2 size-4 rotate-0 scale-100" />
-              My Resume
-            </Button>
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild className="max-sm:hidden">
+                <Button variant="outline">
+                  <FileTextIcon className="mr-2 size-4 rotate-0 scale-100" />
+                  My Resume
+                </Button>
+              </DropdownMenuTrigger>
+
+              <DropdownMenuContent>
+                <InternalLink
+                  href="/resume/HMOURA_OUSSAMA_CV_FR.pdf"
+                  variant="ghost"
+                  className="w-full max-md:hidden"
+                >
+                  French
+                </InternalLink>
+                <DropdownMenuSeparator />
+
+                <InternalLink
+                  href="/resume/HMOURA_OUSSAMA_CV_EN.pdf"
+                  variant="ghost"
+                  className="w-full max-md:hidden"
+                >
+                  English
+                </InternalLink>
+              </DropdownMenuContent>
+            </DropdownMenu>
           </TooltipWrapper>
 
           <TooltipWrapper text="LinkedIn" asChild>
             <ExternalLink
-              href="https://www.linkedin.com/in/ngjx/"
+              href="https://www.linkedin.com/in/hmoura-oussama/"
               variant="outline"
               size="icon"
               className="my-auto max-sm:hidden"
@@ -108,7 +118,7 @@ const Navbar = () => {
 
           <TooltipWrapper text="Github" asChild>
             <ExternalLink
-              href="https://github.com/caffeine-addictt"
+              href="https://github.com/kuo-hm"
               variant="outline"
               size="icon"
               className="my-auto max-sm:hidden"
@@ -120,7 +130,7 @@ const Navbar = () => {
           <ModeToggle className="my-auto" />
 
           {/* Mobile dropdown */}
-          <MobileDropdown toast={toast} />
+          <MobileDropdown />
         </div>
       </div>
     </nav>
@@ -128,11 +138,7 @@ const Navbar = () => {
 };
 export default Navbar;
 
-const MobileDropdown = ({
-  toast,
-}: {
-  toast: ReturnType<typeof useToast>['toast'];
-}) => (
+const MobileDropdown = () => (
   <DropdownMenu>
     <DropdownMenuTrigger className="group" asChild>
       <Button
@@ -165,26 +171,10 @@ const MobileDropdown = ({
           My Projects
         </InternalLink>
       </DropdownMenuItem>
-      <DropdownMenuItem>
-        <Button
-          variant="link"
-          className="w-full"
-          onClick={() =>
-            toast({
-              title: 'Coming soon!',
-              description: 'My Resume will be available soon.',
-              variant: 'destructive',
-            })
-          }
-        >
-          <FileTextIcon className="mr-2 size-4 rotate-0 scale-100" />
-          My Resume
-        </Button>
-      </DropdownMenuItem>
 
       <DropdownMenuItem>
         <ExternalLink
-          href="https://github.com/caffeine-addictt"
+          href="https://github.com/kuo-hm"
           variant="link"
           className="w-full"
         >
@@ -194,7 +184,7 @@ const MobileDropdown = ({
       </DropdownMenuItem>
       <DropdownMenuItem>
         <ExternalLink
-          href="https://www.linkedin.com/in/ngjx/"
+          href="https://www.linkedin.com/in/hmoura-oussama/"
           variant="link"
           className="w-full"
         >
@@ -208,6 +198,40 @@ const MobileDropdown = ({
           <EnvelopeOpenIcon className="mr-2 size-4" />
           Contact Me
         </InternalLink>
+      </DropdownMenuItem>
+
+      <DropdownMenuItem>
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild className="group w-full">
+            <Button variant="ghost">
+              <FileTextIcon className="mr-2 size-4 rotate-0 scale-100" />
+              My Resume
+            </Button>
+          </DropdownMenuTrigger>
+
+          <DropdownMenuContent align="end">
+            <DropdownMenuItem>
+              <ExternalLink
+                href="/resume/HMOURA_OUSSAMA_CV_FR.pdf"
+                variant="ghost"
+                className="w-full "
+                download
+              >
+                French
+              </ExternalLink>
+            </DropdownMenuItem>
+            <DropdownMenuItem>
+              <ExternalLink
+                href="/resume/HMOURA_OUSSAMA_CV_EN.pdf"
+                variant="ghost"
+                download
+                className="w-full"
+              >
+                English
+              </ExternalLink>
+            </DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
       </DropdownMenuItem>
     </DropdownMenuContent>
   </DropdownMenu>

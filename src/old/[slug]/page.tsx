@@ -1,16 +1,15 @@
-import * as React from 'react';
 import { Suspense } from 'react';
 
-import Image from 'next/image';
-import { Metadata } from 'next';
+import { queryProjects, urlFor } from '@lib/sanity/client';
 import { escapeQueryString } from '@utils/strings';
-import { urlFor, queryProjects } from '@lib/sanity/client';
+import { Metadata } from 'next';
+import Image from 'next/image';
 
-import { Skeleton } from '@components/ui/skeleton';
-import { Separator } from '@components/ui/separator';
-import { TooltipWrapper } from '@components/ui/tooltip';
-import { ExternalLink, InternalLink } from '@components/ui/button';
 import { EnforceTypographyStyling } from '@components/typography';
+import { ExternalLink, InternalLink } from '@components/ui/button';
+import { Separator } from '@components/ui/separator';
+import { Skeleton } from '@components/ui/skeleton';
+import { TooltipWrapper } from '@components/ui/tooltip';
 
 import { GitHubLogoIcon } from '@radix-ui/react-icons';
 
@@ -74,7 +73,7 @@ const ProjectPage = async ({
         <div className="mt-8 flex w-4/5 flex-col items-center max-sm:w-[97.5%]">
           <h1 className="mx-auto w-fit text-5xl font-bold sm:w-1/2">
             <span className="block text-center text-base uppercase tracking-wide text-accent-light dark:text-accent-dark">
-              Alex Ng - Project
+              Oussama ProjectProject
             </span>
             <span className="mt-2 block text-center text-5xl leading-8 tracking-tight sm:text-6xl">
               Looks like this project doesn&apos;t exist!
@@ -108,7 +107,7 @@ const ProjectPage = async ({
         {/* Header */}
         <h1 className="mx-auto w-fit text-5xl font-bold sm:w-1/2">
           <span className="block text-center text-base uppercase tracking-wide text-accent-light dark:text-accent-dark">
-            Alex Ng - Project
+            Oussama ProjectProject
           </span>
           <span className="mt-2 block text-center text-5xl leading-8 tracking-tight sm:text-6xl">
             {data.title}

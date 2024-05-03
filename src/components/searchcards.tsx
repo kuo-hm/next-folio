@@ -4,7 +4,6 @@ import { Suspense } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { urlFor } from '@lib/sanity/client';
 import { BlogItem, ProjectItem, SkillsItem } from '@lib/sanity/schema';
 import { cn } from '@utils/tailwind';
 
@@ -32,7 +31,7 @@ export const ImageRender = async ({
     try {
       return (
         <Image
-          src={urlFor(icon).url()}
+          src={'/images/defaultCardPicture.png'}
           alt="Image"
           width={500}
           height={500}
