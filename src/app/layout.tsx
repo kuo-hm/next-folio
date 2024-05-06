@@ -118,6 +118,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
           <main className="flex w-full max-w-full grow">
             {children}
             <BackToTopButton />
+            <Analytics/>
           </main>
           <Footer />
           <Toaster />
