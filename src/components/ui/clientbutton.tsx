@@ -1,14 +1,14 @@
 'use client';
 
 import * as React from 'react';
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 import { cn } from '@utils/tailwind';
 import { useToast } from './use-toast';
 
-import { TooltipWrapper } from './tooltip';
-import { Button, ButtonProps } from './button';
 import { ArrowUpIcon, CopyIcon } from '@radix-ui/react-icons';
+import { Button, ButtonProps } from './button';
+import { TooltipWrapper } from './tooltip';
 
 const CopyButton = React.forwardRef<
   React.ElementRef<typeof TooltipWrapper>,
@@ -102,4 +102,4 @@ const BackToTopButton = React.forwardRef<
 });
 BackToTopButton.displayName = 'BackToTopButton';
 
-export { CopyButton, SmoothScroll, BackToTopButton };
+export { BackToTopButton, CopyButton, SmoothScroll };

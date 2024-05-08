@@ -154,211 +154,246 @@ const RenderSkills = async () => {
       name: 'ReactJs',
       href: 'https://react.dev/',
       icon: { dark: false, light: true },
-      image: '/images/react.svg',
+      imageLight: '/images/react.svg',
+      imageDark: '/images/react.svg',
     },
     {
       name: 'Radix',
       href: 'https://www.radix-ui.com/',
-      icon: { dark: false, light: true },
-      image: '/images/radix.svg',
+      icon: { dark: true, light: true },
+      imageLight: '/images/LIGHT_radix.webp',
+      imageDark: '/images/radix.svg',
     },
     {
       name: 'CSharp',
       href: 'https://learn.microsoft.com/en-us/dotnet/csharp/',
       icon: { dark: false, light: true },
-      image: '/images/CSharp.svg',
+      imageLight: '/images/CSharp.svg',
+      imageDark: '/images/CSharp.svg',
     },
     {
       name: 'Fedora',
       href: 'https://fedoraproject.org/',
       icon: { dark: false, light: true },
-      image: '/images/Fedora.svg',
+      imageLight: '/images/Fedora.svg',
+      imageDark: '/images/Fedora.svg',
     },
     {
       name: 'Sqlite',
       href: 'https://www.sqlite.org/',
       icon: { dark: false, light: true },
-      image: '/images/Sqlite.svg',
+      imageLight: '/images/Sqlite.svg',
+      imageDark: '/images/Sqlite.svg',
     },
     {
       name: 'Flask',
       href: 'https://flask.palletsprojects.com',
-      icon: { dark: false, light: true },
-      image: '/images/Flask.svg',
+      icon: { dark: true, light: true },
+      imageLight: '/images/Flask.svg',
+      imageDark: '/images/LIGHT_Flask.png',
     },
     {
       name: 'Nginx',
       href: 'https://www.nginx.com/',
       icon: { dark: false, light: true },
-      image: '/images/Nginx.svg',
+      imageLight: '/images/Nginx.svg',
+      imageDark: '/images/Nginx.svg',
     },
     {
       name: 'Sass',
       href: 'https://sass-lang.com/',
       icon: { dark: false, light: true },
-      image: '/images/Sass.svg',
+      imageLight: '/images/Sass.svg',
+      imageDark: '/images/Sass.svg',
     },
     {
       name: 'JavaScript',
       href: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript',
       icon: { dark: false, light: true },
-      image: '/images/JavaScript.svg',
+      imageLight: '/images/JavaScript.svg',
+      imageDark: '/images/JavaScript.svg',
     },
     {
       name: 'JQuery',
       href: 'https://jquery.com/',
       icon: { dark: false, light: true },
-      image: '/images/JQuery.svg',
+      imageLight: '/images/JQuery.svg',
+      imageDark: '/images/JQuery.svg',
     },
     {
       name: 'Linux',
       href: 'https://www.linux.org/',
       icon: { dark: false, light: true },
-      image: '/images/Linux.svg',
+      imageLight: '/images/Linux.svg',
+      imageDark: '/images/Linux.svg',
     },
     {
       name: 'Python',
       href: 'https://www.python.org/',
       icon: { dark: false, light: true },
-      image: '/images/Python.svg',
+      imageLight: '/images/Python.svg',
+      imageDark: '/images/Python.svg',
     },
     {
       name: 'Go',
       href: 'https://go.dev/',
       icon: { dark: false, light: true },
-      image: '/images/Go.svg',
+      imageLight: '/images/Go.svg',
+      imageDark: '/images/Go.svg',
     },
     {
       name: 'Debian',
       href: 'https://www.debian.org/',
       icon: { dark: false, light: true },
-      image: '/images/Debian.svg',
+      imageLight: '/images/Debian.svg',
+      imageDark: '/images/Debian.svg',
     },
     {
       name: 'Vim',
       href: 'https://www.vim.org/',
       icon: { dark: false, light: true },
-      image: '/images/Vim.svg',
+      imageLight: '/images/Vim.svg',
+      imageDark: '/images/Vim.svg',
     },
     {
       name: 'Docker',
       href: 'https://www.docker.com/',
       icon: { dark: false, light: true },
-      image: '/images/Docker.svg',
+      imageLight: '/images/Docker.svg',
+      imageDark: '/images/Docker.svg',
     },
     {
       name: 'Npm',
       href: 'https://www.npmjs.com/',
       icon: { dark: false, light: true },
-      image: '/images/Npm.svg',
+      imageLight: '/images/Npm.svg',
+      imageDark: '/images/Npm.svg',
     },
     {
       name: 'Eslint',
       href: 'https://eslint.org/',
       icon: { dark: false, light: true },
-      image: '/images/Eslint.svg',
+      imageLight: '/images/Eslint.svg',
+      imageDark: '/images/Eslint.svg',
     },
     {
       name: 'Typescript',
       href: 'https://www.typescriptlang.org/',
       icon: { dark: false, light: true },
-      image: '/images/Typescript.svg',
+      imageLight: '/images/Typescript.svg',
+      imageDark: '/images/Typescript.svg',
     },
     {
       name: 'Redis',
       href: 'https://redis.io/',
       icon: { dark: false, light: true },
-      image: '/images/Redis.svg',
+      imageLight: '/images/Redis.svg',
+      imageDark: '/images/Redis.svg',
     },
     {
       name: 'MarkDown',
       href: 'https://www.markdownguide.org/',
-      icon: { dark: false, light: true },
-      image: '/images/MarkDown.svg',
+      icon: { dark: true, light: true },
+      imageLight: '/images/LIGHT_MarkDown.webp',
+      imageDark: '/images/MarkDown.svg',
     },
     {
       name: 'Git',
       href: 'https://git-scm.com/',
       icon: { dark: false, light: true },
-      image: '/images/Git.svg',
+      imageLight: '/images/Git.svg',
+      imageDark: '/images/Git.svg',
     },
     {
       name: 'Vercel',
       href: 'https://vercel.com/',
-      icon: { dark: false, light: true },
-      image: '/images/Vercel.svg',
+      icon: { dark: true, light: true },
+      imageLight: '/images/Vercel.svg',
+      imageDark: '/images/DARK_vercel.webp',
     },
     {
       name: 'Postgresql',
       href: 'https://www.postgresql.org/',
       icon: { dark: false, light: true },
-      image: '/images/Postgresql.svg',
+      imageLight: '/images/Postgresql.svg',
+      imageDark: '/images/Postgresql.svg',
     },
     {
       name: 'Tailwindcss',
       href: 'https://tailwindcss.com/',
       icon: { dark: false, light: true },
-      image: '/images/Tailwindcss.svg',
+      imageLight: '/images/Tailwindcss.svg',
+      imageDark: '/images/Tailwindcss.svg',
     },
     {
       name: 'Html5',
       href: 'https://developer.mozilla.org/en-US/docs/Glossary/HTML5',
       icon: { dark: false, light: true },
-      image: '/images/Html5.svg',
+      imageLight: '/images/Html5.svg',
+      imageDark: '/images/Html5.svg',
     },
     {
       name: 'Ubuntu',
       href: 'https://ubuntu.com/',
       icon: { dark: false, light: true },
-      image: '/images/Ubuntu.svg',
+      imageLight: '/images/Ubuntu.svg',
+      imageDark: '/images/Ubuntu.svg',
     },
     {
       name: 'Mongodb',
       href: 'https://www.mongodb.com/',
       icon: { dark: false, light: true },
-      image: '/images/Mongodb.svg',
+      imageLight: '/images/Mongodb.svg',
+      imageDark: '/images/Mongodb.svg',
     },
     {
       name: 'NextJS',
       href: 'https://nextjs.org/',
       icon: { dark: false, light: true },
-      image: '/images/NextJS.svg',
+      imageLight: '/images/NextJS.svg',
+      imageDark: '/images/NextJS.svg',
     },
     {
       name: 'VScode',
       href: 'https://code.visualstudio.com/',
       icon: { dark: false, light: true },
-      image: '/images/VScode.svg',
+      imageLight: '/images/VScode.svg',
+      imageDark: '/images/VScode.svg',
     },
     {
       name: 'ArchLinux',
       href: 'https://archlinux.org/',
       icon: { dark: false, light: true },
-      image: '/images/ArchLinux.svg',
+      imageLight: '/images/ArchLinux.svg',
+      imageDark: '/images/ArchLinux.svg',
     },
     {
       name: 'Sql',
       href: 'https://developer.mozilla.org/en-US/docs/Glossary/SQL',
       icon: { dark: false, light: true },
-      image: '/images/Sql.svg',
+      imageLight: '/images/Sql.svg',
+      imageDark: '/images/Sql.svg',
     },
     {
       name: 'Shadcn',
       href: 'https://ui.shadcn.com/',
-      icon: { dark: false, light: true },
-      image: '/images/Shadcn.svg',
+      icon: { dark: true, light: true },
+      imageLight: '/images/Shadcn.svg',
+      imageDark: '/images/DARK_shadcn.webp',
     },
     {
       name: 'NodeJS',
       href: 'https://nodejs.org',
       icon: { dark: false, light: true },
-      image: '/images/NodeJS.svg',
+      imageLight: '/images/NodeJS.svg',
+      imageDark: '/images/NodeJS.svg',
     },
     {
       name: 'ReduxJS',
       href: 'https://redux.js.org/',
       icon: { dark: false, light: true },
-      image: '/images/ReduxJS.svg',
+      imageLight: '/images/ReduxJS.svg',
+      imageDark: '/images/ReduxJS.svg',
     },
   ];
 
@@ -377,8 +412,8 @@ const RenderSkills = async () => {
                 <>
                   <Image
                     src={
-                      skill.image
-                        ? skill.image
+                      skill.imageLight
+                        ? skill.imageLight
                         : '/images/defaultCardPicture.png'
                     }
                     alt="/images/dark.svg"
@@ -388,8 +423,8 @@ const RenderSkills = async () => {
                   />
                   <Image
                     src={
-                      skill.image
-                        ? skill.image
+                      skill.imageDark
+                        ? skill.imageDark
                         : '/images/defaultCardPicture.png'
                     }
                     alt="/images/light.svg"
@@ -403,8 +438,8 @@ const RenderSkills = async () => {
                   {skill.icon?.dark || skill.icon?.light ? (
                     <Image
                       src={
-                        skill.image
-                          ? skill.image
+                        skill.imageDark
+                          ? skill.imageDark
                           : '/images/defaultCardPicture.png'
                       }
                       alt="/images/dark.svg"
