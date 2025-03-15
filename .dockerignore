@@ -8,8 +8,6 @@ yarn-error.log
 .next
 out
 
-# Environment files
-.env
 
 # System files
 .DS_Store
