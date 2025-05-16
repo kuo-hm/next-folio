@@ -11,7 +11,7 @@ export const titleCase = (str: string) => {
 };
 
 /**
- * Escape sanity query string
+ * Escape query string
  * @param str string to escape
  * @returns escaped string
  */

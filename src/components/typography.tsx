@@ -3,7 +3,6 @@ import { Suspense } from 'react';
 import Image from 'next/image';
 
 import { cn } from '@utils/tailwind';
-import { urlFor, getImageDimensions } from '@lib/sanity/client';
 
 import { PortableText } from '@portabletext/react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
@@ -66,17 +65,14 @@ EnforceTypographyStyling.displayName = 'EnforceTypographyStyling';
 export { EnforceTypographyStyling };
 
 const imageComponent = ({ value }: { value: any }) => {
-  const { width, height } = getImageDimensions(value);
-  if (!width || !height) return null;
-
   return (
     <div className="mx-auto my-8 flex max-h-screen w-screen max-w-full items-center overflow-hidden rounded-lg">
       <Suspense fallback={<Skeleton className="h-screen w-screen" />}>
         <Image
-          src={urlFor(value).url()}
-          alt={value.alt || ''}
-          width={width}
-          height={height}
+          src={value?.src || '/images/defaultCardPicture.png'}
+          alt={value?.alt || ''}
+          width={value?.width || 500}
+          height={value?.height || 500}
           loading="lazy"
           className="size-full"
         />

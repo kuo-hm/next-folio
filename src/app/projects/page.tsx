@@ -3,7 +3,6 @@ import { Metadata } from 'next';
 import SearchUI from '@components/search';
 import SearchPagination from '@components/search-pagination';
 import { ProjectCards } from '@components/searchcards';
-import { ProjectItem } from '@lib/sanity/schema';
 
 export const metadata: Metadata = {
   title: 'My Projects',
@@ -13,6 +12,17 @@ export const metadata: Metadata = {
 interface PageParamProps {
   searchParams?: { query?: string; page?: string; tech?: string[] | string };
 }
+
+type ProjectItem = {
+  slug: string;
+  title: string;
+  description: { short: string; long: string[] };
+  images: { image: string; icon: string };
+  links: { repo: string; extra: { title: string; url: string }[] };
+  technologies: { name: string }[];
+  timeframe: { start: string; end: string };
+};
+
 const ProjectsListPage = async ({ searchParams }: PageParamProps) => {
   const currentPage = Number(searchParams?.page ?? 1);
 
@@ -41,12 +51,6 @@ const ProjectsListPage = async ({ searchParams }: PageParamProps) => {
       technologies: [
         {
           name: 'NextJs',
-          href: '',
-          start_time: '',
-          icon: {
-            dark: true,
-            light: false,
-          },
         },
       ],
       timeframe: {

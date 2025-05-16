@@ -4,7 +4,6 @@ import { Suspense } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { BlogItem, ProjectItem, SkillsItem } from '@lib/sanity/schema';
 import { cn } from '@utils/tailwind';
 
 import { AspectRatio } from '@components/ui/aspect-ratio';
@@ -19,6 +18,26 @@ import {
 import { Skeleton } from '@components/ui/skeleton';
 import { DotFilledIcon } from '@radix-ui/react-icons';
 import { BookOpen } from 'lucide-react';
+
+type SkillsItem = { name: string };
+type ProjectItem = {
+  slug: string;
+  title: string;
+  description: { short: string; long: string[] };
+  images: { image: string; icon: string };
+  links: { repo: string; extra: { title: string; url: string }[] };
+  technologies: SkillsItem[];
+  timeframe: { start: string; end: string };
+};
+type BlogItem = {
+  slug: string;
+  title: string;
+  description: { short: string; long: string[] };
+  images: { image: string; icon: string };
+  technologies: SkillsItem[];
+  timeframe: { published: string };
+  estimatedReadingTime: number;
+};
 
 export const ImageRender = async ({
   icon,
