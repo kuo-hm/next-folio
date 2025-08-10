@@ -25,7 +25,7 @@ import {
 import { Textarea } from '@components/ui/textarea';
 
 import { useToast } from '@components/ui/use-toast';
-import { sendEmail } from '@utils/send-email';
+import { useSendEmail } from '@utils/hooks/email';
 
 export const formSchema = z.object({
   type: z.string({ required_error: 'Type is required' }),
@@ -36,6 +36,8 @@ export const formSchema = z.object({
 
 export const ContactForm = () => {
   const { toast } = useToast();
+  const sendEmailMutation = useSendEmail();
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -52,17 +54,25 @@ export const ContactForm = () => {
 
   const submitProxy = async (data: z.infer<typeof formSchema>) => {
     toast({ title: 'Sending...', description: 'Please be patient!' });
-    const actionResult = await sendEmail(data);
 
-    if (!actionResult) {
-      toast({
-        variant: 'destructive',
-        title: 'Something went wrong.',
-        description: 'Please try again later.',
-      });
-    } else {
+    try {
+      await sendEmailMutation.mutateAsync(data);
       toast({ title: 'Sent!', description: 'Thanks for your feedback!' });
       form.reset();
+    } catch (error: any) {
+      if (error.response?.status === 400) {
+        toast({
+          variant: 'destructive',
+          title: 'Invalid Input',
+          description: 'Please check your input and try again.',
+        });
+      } else {
+        toast({
+          variant: 'destructive',
+          title: 'Something went wrong.',
+          description: 'Please try again later.',
+        });
+      }
     }
   };
 
@@ -92,9 +102,7 @@ export const ContactForm = () => {
                   <SelectItem value="hireme">Hire Me</SelectItem>
                 </SelectContent>
               </Select>
-              <FormDescription>
-                Please select most relevant contact reason
-              </FormDescription>
+              <FormDescription>Please select most relevant contact reason</FormDescription>
               <FormMessage />
             </FormItem>
           )}
