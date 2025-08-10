@@ -1,18 +1,25 @@
-import { useQuery } from '@tanstack/react-query';
 import { axiosInstance } from '@/api';
+import { useQuery } from '@tanstack/react-query';
 
-interface Project {
+export interface Project {
   id: string;
-  title: string;
+  name: string;
   description: string;
-  // Add other project properties as needed
+  websiteLink: string;
+  githubLink: string;
+  imageUrl: string;
+  createdAt: string;
+  updatedAt: string;
 }
 
 interface ProjectsResponse {
   data: Project[];
-  total: number;
-  page: number;
-  limit: number;
+  meta: {
+    total: number;
+    page: number;
+    limit: number;
+    totalPages: number;
+  };
 }
 
 interface UseProjectsOptions {

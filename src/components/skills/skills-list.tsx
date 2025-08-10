@@ -1,7 +1,12 @@
 'use client';
 
 import { useSkills } from '@/utils/hooks/skills';
-import { getImageUrl } from '@utils/helpers';
+import Image from 'next/image';
+import { Suspense } from 'react';
+import { getImageUrl } from '../../utils/helpers';
+import { ExternalLink } from '../ui/button';
+import { Skeleton } from '../ui/skeleton';
+import { TooltipWrapper } from '../ui/tooltip';
 
 export default function SkillsList() {
   const { data: skills, isLoading, isError } = useSkills();
@@ -26,29 +31,34 @@ export default function SkillsList() {
   if (!skills?.length) return <div>No skills found</div>;
 
   return (
-    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-      {skills.map((skill) => (
-        <div key={skill.id} className="flex flex-col items-center rounded-lg border p-4 shadow-sm">
-          {skill.imageUrl && (
-            <img
-              src={getImageUrl(skill.imageUrl)}
-              alt={skill.name}
-              className="mb-2 h-16 w-16 object-contain"
-            />
-          )}
-          <h3 className="text-lg font-semibold">{skill.name}</h3>
-          <p className="text-sm text-muted-foreground">{skill.type}</p>
-          {skill.docsLink && (
-            <a
-              href={skill.docsLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-2 text-sm text-blue-500 hover:underline"
-            >
-              Documentation
-            </a>
-          )}
-        </div>
+    <div className="flex max-w-[70%] flex-wrap justify-center gap-2">
+      {skills.map((skill, key) => (
+        <TooltipWrapper key={key} text={skill.name} asChild>
+          <ExternalLink href={skill.docsLink} size="icon" variant="outline" className="relative">
+            <Suspense fallback={<Skeleton className="relative size-full" />}>
+              {skill?.darkImageUrl && skill?.lightImageUrl && (
+                <>
+                  <Image
+                    src={getImageUrl(skill.lightImageUrl)}
+                    alt="/images/dark.svg"
+                    width={16}
+                    unoptimized
+                    height={16}
+                    className="absolute size-6 scale-100 transition-all dark:scale-0"
+                  />
+                  <Image
+                    src={getImageUrl(skill.darkImageUrl)}
+                    alt="/images/light.svg"
+                    width={16}
+                    unoptimized
+                    height={16}
+                    className="absolute size-6 scale-0 transition-all dark:scale-100"
+                  />
+                </>
+              )}
+            </Suspense>
+          </ExternalLink>
+        </TooltipWrapper>
       ))}
     </div>
   );

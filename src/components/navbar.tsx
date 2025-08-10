@@ -21,20 +21,21 @@ import {
   HamburgerMenuIcon,
   LinkedInLogoIcon,
 } from '@radix-ui/react-icons';
+import { getPdfUrl } from '../utils/helpers';
+import { Language } from '../utils/helpers/const/language';
+import { useResumes } from '../utils/hooks/resume';
 import { SmoothScroll } from './ui/clientbutton';
 
 const Navbar = () => {
+  const { data: resumes, isLoading, isError } = useResumes();
+
   return (
     <nav className="fixed z-50 flex h-16 w-full justify-center bg-white/60 shadow-sm backdrop-blur-sm transition-all will-change-scroll dark:bg-black/60">
       <div className="mb-2 mt-4 flex h-full w-[95%] flex-row justify-between gap-1 self-center">
         {/* Left */}
         <div className="flex flex-row gap-1 self-center">
           <TooltipWrapper text="Home page" asChild>
-            <InternalLink
-              href="/"
-              variant="link"
-              className="my-auto text-lg font-bold"
-            >
+            <InternalLink href="/" variant="link" className="my-auto text-lg font-bold">
               <CodeIcon className="mr-2 size-6 rotate-0 scale-100" />
             </InternalLink>
           </TooltipWrapper>
@@ -65,11 +66,7 @@ const Navbar = () => {
         {/* Right */}
         <div className="flex flex-row gap-1 self-center">
           <TooltipWrapper text="View my blog!" asChild>
-            <InternalLink
-              href="/contact"
-              variant="outline"
-              className="my-auto max-md:hidden"
-            >
+            <InternalLink href="/contact" variant="outline" className="my-auto max-md:hidden">
               <EnvelopeOpenIcon className="mr-2 size-4 rotate-0 scale-100" />
               Contact Me
             </InternalLink>
@@ -85,22 +82,29 @@ const Navbar = () => {
               </DropdownMenuTrigger>
 
               <DropdownMenuContent>
-                <InternalLink
-                  href="/resume/HMOURA_OUSSAMA_CV_FR.pdf"
-                  variant="ghost"
-                  className="w-full max-md:hidden"
-                >
-                  French
-                </InternalLink>
-                <DropdownMenuSeparator />
-
-                <InternalLink
-                  href="/resume/HMOURA_OUSSAMA_CV_EN.pdf"
-                  variant="ghost"
-                  className="w-full max-md:hidden"
-                >
-                  English
-                </InternalLink>
+                {resumes ? (
+                  resumes?.map((resume, idx) => (
+                    <>
+                      <ExternalLink
+                        key={resume.id}
+                        href={getPdfUrl(resume.filePath)}
+                        variant="ghost"
+                        className="w-full max-md:hidden"
+                      >
+                        {Language[resume.language]}
+                      </ExternalLink>
+                      {idx < resumes.length - 1 && <DropdownMenuSeparator />}
+                    </>
+                  ))
+                ) : (
+                  <div className="p-4 text-center">
+                    {isLoading
+                      ? 'Loading resumes...'
+                      : isError
+                        ? 'Error loading resumes'
+                        : 'No resumes found'}
+                  </div>
+                )}
               </DropdownMenuContent>
             </DropdownMenu>
           </TooltipWrapper>
@@ -154,9 +158,7 @@ const MobileDropdown = () => (
 
     {/* Options */}
     <DropdownMenuContent align="end">
-      <DropdownMenuLabel className="text-center text-base">
-        Important Links
-      </DropdownMenuLabel>
+      <DropdownMenuLabel className="text-center text-base">Important Links</DropdownMenuLabel>
       <DropdownMenuSeparator />
 
       <DropdownMenuItem>
@@ -173,11 +175,7 @@ const MobileDropdown = () => (
       </DropdownMenuItem>
 
       <DropdownMenuItem>
-        <ExternalLink
-          href="https://github.com/kuo-hm"
-          variant="link"
-          className="w-full"
-        >
+        <ExternalLink href="https://github.com/kuo-hm" variant="link" className="w-full">
           <GitHubLogoIcon className="mr-2 size-4" />
           My Github
         </ExternalLink>

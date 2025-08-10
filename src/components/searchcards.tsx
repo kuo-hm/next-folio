@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { Suspense } from 'react';
 
@@ -16,8 +18,11 @@ import {
   CardTitle,
 } from '@components/ui/card';
 import { Skeleton } from '@components/ui/skeleton';
-import { DotFilledIcon } from '@radix-ui/react-icons';
-import { BookOpen } from 'lucide-react';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@components/ui/tooltip';
+import { DotFilledIcon, GitHubLogoIcon } from '@radix-ui/react-icons';
+import { Globe2Icon } from 'lucide-react';
+import { getImageUrl } from '../utils/helpers';
+import { useProjects } from '../utils/hooks/projects';
 
 type SkillsItem = { name: string };
 type ProjectItem = {
@@ -39,21 +44,16 @@ type BlogItem = {
   estimatedReadingTime: number;
 };
 
-export const ImageRender = async ({
-  icon,
-  className,
-}: {
-  icon?: any;
-  className?: string;
-}) => {
+export const ImageRender = async ({ icon, className }: { icon?: any; className?: string }) => {
   if (!!icon) {
     try {
       return (
         <Image
-          src={'/images/defaultCardPicture.png'}
+          src={getImageUrl(icon)}
           alt="Image"
           width={500}
           height={500}
+          unoptimized
           className={cn('size-full', className)}
         />
       );
@@ -73,60 +73,42 @@ export const ImageRender = async ({
   );
 };
 
-export const ProjectCards = async ({ data }: { data: ProjectItem[] }) => (
-  <>
-    {!!!data?.length ? (
-      <p>Looks like no projects were found, try a different search term!</p>
-    ) : (
-      data.map((project, key) => (
-        <RenderCard
-          key={key}
-          cardData={{
-            title: project.title,
-            shortDescription: project.description.short,
-            icon: project.images?.icon,
-            link: `/projects/${project.slug}`,
-            technologies: project?.technologies,
-          }}
-          date={
-            project.timeframe?.end ? new Date(project.timeframe.end) : 'Present'
-          }
-          renderReadingTime={false}
-        />
-      ))
-    )}
-  </>
-);
+export const ProjectCards = async ({ data }: { data: ProjectItem[] }) => {
+  const { data: projectsResponse, isLoading } = useProjects({ page: 1 });
 
-export const BlogCards = async ({ data }: { data: BlogItem[] }) => (
-  <>
-    {!!!data?.length ? (
-      <p>Looks like no blogs were found, try a different search term!</p>
-    ) : (
-      data.map((project, key) => (
-        <RenderCard
-          key={key}
-          cardData={{
-            title: project.title,
-            shortDescription: project.description.short,
-            icon: project.images?.icon,
-            link: `/blog/${project.slug}`,
-            technologies: project?.technologies,
-          }}
-          estimatedReadingTime={project.estimatedReadingTime}
-          date={new Date(project.timeframe?.published)}
-          renderReadingTime={true}
-        />
-      ))
-    )}
-  </>
-);
+  if (isLoading) {
+    return <CardSkeleton cardCount={8} />;
+  }
+  return (
+    <>
+      {projectsResponse &&
+        projectsResponse?.data &&
+        projectsResponse?.data.length &&
+        projectsResponse.data.map((project, key) => (
+          <RenderCard
+            key={key}
+            cardData={{
+              title: project.name,
+              shortDescription: project.description,
+              icon: project.imageUrl,
+              githubLink: project.githubLink,
+              link: project.websiteLink,
+              technologies: [],
+            }}
+            date={project.createdAt ? new Date(project.createdAt) : 'Present'}
+            renderReadingTime={false}
+          />
+        ))}
+    </>
+  );
+};
 
 interface RenderCardProps extends React.HTMLAttributes<HTMLDivElement> {
   cardData: {
     title: string;
     shortDescription: string;
     link: string;
+    githubLink: string;
     icon?: any;
     technologies?: SkillsItem[];
   };
@@ -135,63 +117,83 @@ interface RenderCardProps extends React.HTMLAttributes<HTMLDivElement> {
   renderReadingTime: boolean;
 }
 const RenderCard = React.forwardRef<HTMLDivElement, RenderCardProps>(
-  (
-    { cardData, date, renderReadingTime, estimatedReadingTime, ...props },
-    ref,
-  ) => (
-    <Card
-      ref={ref}
-      {...props}
-      className="relative flex h-[30rem] w-64 flex-col overflow-hidden rounded-lg transition-all duration-300 hover:border-accent-light hover:shadow-lg dark:hover:border-accent-dark"
-    >
-      <AspectRatio ratio={1}>
-        <Suspense fallback={<Skeleton className="size-64" />}>
-          <ImageRender icon={cardData.icon} className="size-64" />
-        </Suspense>
-      </AspectRatio>
+  ({ cardData, date, renderReadingTime, estimatedReadingTime, ...props }, ref) => (
+    <TooltipProvider>
+      <Card
+        ref={ref}
+        {...props}
+        className="relative flex h-[30rem] w-64 flex-col overflow-hidden rounded-lg transition-all duration-300 hover:border-accent-light hover:shadow-lg dark:hover:border-accent-dark"
+      >
+        <AspectRatio ratio={1}>
+          <Suspense fallback={<Skeleton className="size-64" />}>
+            <ImageRender icon={cardData.icon} className="size-64" />
+          </Suspense>
+        </AspectRatio>
 
-      {/* Hover */}
-      <Link href={cardData.link} className="absolute inset-0 size-full" />
+        {/* Hover */}
+        {/* <Link href={cardData.githubLink} className="absolute inset-0 size-full" /> */}
 
-      {/* Title */}
-      <CardHeader>
-        <CardTitle>{cardData.title}</CardTitle>
-      </CardHeader>
+        {/* Title */}
+        <CardHeader>
+          <CardTitle>{cardData.title}</CardTitle>
+        </CardHeader>
 
-      {/* Desc */}
-      <CardContent>
-        <CardDescription>{cardData.shortDescription}</CardDescription>
-      </CardContent>
+        {/* Desc */}
+        <CardContent>
+          <CardDescription>{cardData.shortDescription}</CardDescription>
+        </CardContent>
 
-      <CardFooter className="mb-0 mt-auto flex flex-row items-center gap-1">
-        {/* Date */}
-        <p className="w-fit text-sm font-light">
-          {typeof date === 'string'
-            ? date
-            : `${date.getUTCMonth() + 1}/${date.getUTCFullYear()}`}
-        </p>
+        <CardFooter className="mb-0 mt-auto flex flex-row items-center gap-1">
+          {/* Date */}
+          <p className="w-fit text-sm font-light">
+            {typeof date === 'string'
+              ? date
+              : `${date.getUTCDate()}/${date.getUTCMonth() + 1}/${date.getUTCFullYear().toString().slice(2)}`}
+          </p>
 
-        {/* Separator */}
-        <DotFilledIcon />
-
-        {/* Technologies */}
-        <p className="flex flex-row text-ellipsis text-xs font-light">
-          {renderReadingTime && estimatedReadingTime ? (
-            <>
-              <BookOpen className="mr-1 size-4" /> ~{estimatedReadingTime} min
-              {estimatedReadingTime > 1 ? 's' : ''}
-            </>
-          ) : !!cardData.technologies?.length ? (
-            cardData.technologies
-              .slice(0, 2)
-              .map((tech) => tech.name)
-              .join(', ') + (cardData.technologies.length > 2 ? '...' : '')
-          ) : (
-            'Unspecified'
+          {/* Separator */}
+          <DotFilledIcon />
+          {cardData.githubLink && (
+            <Tooltip>
+              <TooltipTrigger>
+                <Link href={cardData.githubLink} target="_blank" className="text-sm font-light">
+                  <GitHubLogoIcon className="size-4" />
+                </Link>
+              </TooltipTrigger>
+              <TooltipContent>This is a GitHub link</TooltipContent>
+            </Tooltip>
           )}
-        </p>
-      </CardFooter>
-    </Card>
+          {cardData.githubLink && cardData.link && <DotFilledIcon />}
+          {cardData.link && (
+            <Tooltip>
+              <TooltipTrigger>
+                <Link href={cardData.link} target="_blank" className="text-sm font-light">
+                  <Globe2Icon className="size-4" />
+                </Link>
+              </TooltipTrigger>
+              <TooltipContent>This is a website link</TooltipContent>
+            </Tooltip>
+          )}
+          {/* <DotFilledIcon /> */}
+          {/* Technologies */}
+          {/* <p className="flex flex-row text-ellipsis text-xs font-light">
+            {renderReadingTime && estimatedReadingTime ? (
+              <>
+                <BookOpen className="mr-1 size-4" /> ~{estimatedReadingTime} min
+                {estimatedReadingTime > 1 ? 's' : ''}
+              </>
+            ) : !!cardData.technologies?.length ? (
+              cardData.technologies
+                .slice(0, 2)
+                .map((tech) => tech.name)
+                .join(', ') + (cardData.technologies.length > 2 ? '...' : '')
+            ) : (
+              'Unspecified'
+            )}
+          </p> */}
+        </CardFooter>
+      </Card>
+    </TooltipProvider>
   ),
 );
 RenderCard.displayName = 'RenderCard';
@@ -199,10 +201,7 @@ RenderCard.displayName = 'RenderCard';
 export const CardSkeleton = ({ cardCount }: { cardCount: number }) => (
   <>
     {[...Array(cardCount)].map((_, key) => (
-      <Card
-        key={key}
-        className="flex h-[30rem] w-64 flex-col overflow-hidden rounded-lg"
-      >
+      <Card key={key} className="flex h-[30rem] w-64 flex-col overflow-hidden rounded-lg">
         <AspectRatio ratio={1} asChild>
           <Skeleton className="size-64 rounded-none" />
         </AspectRatio>

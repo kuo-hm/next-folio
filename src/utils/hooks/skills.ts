@@ -1,13 +1,14 @@
 'use client';
 
-import { useQuery } from '@tanstack/react-query';
 import { axiosInstance } from '@/api';
+import { useQuery } from '@tanstack/react-query';
 
 interface Skill {
   id: string;
   name: string;
   type: 'frontend' | 'backend' | 'other'; // Adjust types based on your actual skill types
-  imageUrl: string;
+  lightImageUrl: string;
+  darkImageUrl: string;
   docsLink: string;
   createdAt: string;
   updatedAt: string;

@@ -1,6 +1,5 @@
 import { Metadata } from 'next';
 
-import SearchUI from '@components/search';
 import SearchPagination from '@components/search-pagination';
 import { ProjectCards } from '@components/searchcards';
 
@@ -67,11 +66,11 @@ const ProjectsListPage = async ({ searchParams }: PageParamProps) => {
 
   return (
     <div
-      className="mt-16 flex min-h-screen min-w-full max-w-full flex-col items-center"
+      className="mt-16 flex min-h-screen min-w-full max-w-full flex-col items-center pt-8"
       style={{ minHeight: 'calc(100vh - 64px)' }}
     >
       {/* Filtering */}
-      <SearchUI
+      {/* <SearchUI
         uri="/projects"
         skills={Array.from(skills)}
         placeholder="Search projects"
@@ -79,13 +78,11 @@ const ProjectsListPage = async ({ searchParams }: PageParamProps) => {
           ...searchParams,
           tech: !!searchParams?.tech
             ? Array.from(
-                Array.isArray(searchParams?.tech)
-                  ? searchParams?.tech
-                  : [searchParams?.tech],
+                Array.isArray(searchParams?.tech) ? searchParams?.tech : [searchParams?.tech],
               )
             : undefined,
         }}
-      />
+      /> */}
 
       <div className="mb-4 flex w-4/5 flex-wrap justify-center gap-2 self-center max-sm:w-[97.5%]">
         <ProjectCards data={data} />
