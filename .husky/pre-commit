@@ -1,0 +1,16 @@
+# Run build
+echo "🏗️ Building project..."
+yarn build || {
+    echo "❌ Build failed"
+    exit 1
+}
+
+# Run linting
+# echo "🔎 Running linting..."
+# yarn lint || {
+#     echo "❌ Linting failed"
+#     exit 1
+# }
+
+
+echo "✅ All checks passed!"

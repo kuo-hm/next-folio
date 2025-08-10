@@ -12,6 +12,7 @@ import { Inter } from 'next/font/google';
 import Footer from '@components/footer';
 import Navbar from '@components/navbar';
 import { BackToTopButton } from '@components/ui/clientbutton';
+import Providers from './providers';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -114,14 +115,16 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
         )}
       >
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <Navbar />
-          <main className="flex w-full max-w-full grow">
-            {children}
-            <BackToTopButton />
-            <Analytics />
-          </main>
-          <Footer />
-          <Toaster />
+          <Providers>
+            <Navbar />
+            <main className="flex w-full max-w-full grow">
+              {children}
+              <BackToTopButton />
+              <Analytics />
+            </main>
+            <Footer />
+            <Toaster />
+          </Providers>
         </ThemeProvider>
 
         <Analytics />

@@ -1,9 +1,7 @@
 import { Metadata } from 'next';
 
-import SearchUI from '@components/search';
 import SearchPagination from '@components/search-pagination';
 import { ProjectCards } from '@components/searchcards';
-import { ProjectItem } from '@lib/sanity/schema';
 
 export const metadata: Metadata = {
   title: 'My Projects',
@@ -13,6 +11,17 @@ export const metadata: Metadata = {
 interface PageParamProps {
   searchParams?: { query?: string; page?: string; tech?: string[] | string };
 }
+
+type ProjectItem = {
+  slug: string;
+  title: string;
+  description: { short: string; long: string[] };
+  images: { image: string; icon: string };
+  links: { repo: string; extra: { title: string; url: string }[] };
+  technologies: { name: string }[];
+  timeframe: { start: string; end: string };
+};
+
 const ProjectsListPage = async ({ searchParams }: PageParamProps) => {
   const currentPage = Number(searchParams?.page ?? 1);
 
@@ -41,12 +50,6 @@ const ProjectsListPage = async ({ searchParams }: PageParamProps) => {
       technologies: [
         {
           name: 'NextJs',
-          href: '',
-          start_time: '',
-          icon: {
-            dark: true,
-            light: false,
-          },
         },
       ],
       timeframe: {
@@ -63,11 +66,11 @@ const ProjectsListPage = async ({ searchParams }: PageParamProps) => {
 
   return (
     <div
-      className="mt-16 flex min-h-screen min-w-full max-w-full flex-col items-center"
+      className="mt-16 flex min-h-screen min-w-full max-w-full flex-col items-center pt-8"
       style={{ minHeight: 'calc(100vh - 64px)' }}
     >
       {/* Filtering */}
-      <SearchUI
+      {/* <SearchUI
         uri="/projects"
         skills={Array.from(skills)}
         placeholder="Search projects"
@@ -75,13 +78,11 @@ const ProjectsListPage = async ({ searchParams }: PageParamProps) => {
           ...searchParams,
           tech: !!searchParams?.tech
             ? Array.from(
-                Array.isArray(searchParams?.tech)
-                  ? searchParams?.tech
-                  : [searchParams?.tech],
+                Array.isArray(searchParams?.tech) ? searchParams?.tech : [searchParams?.tech],
               )
             : undefined,
         }}
-      />
+      /> */}
 
       <div className="mb-4 flex w-4/5 flex-wrap justify-center gap-2 self-center max-sm:w-[97.5%]">
         <ProjectCards data={data} />
