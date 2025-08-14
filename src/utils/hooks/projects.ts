@@ -10,6 +10,13 @@ export interface Project {
   imageUrl: string;
   createdAt: string;
   updatedAt: string;
+  skills: {
+    name: string;
+    id: string;
+    lightImageUrl: string;
+    darkImageUrl: string;
+    docsLink: string;
+  }[];
 }
 
 interface ProjectsResponse {
